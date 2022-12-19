@@ -9,6 +9,7 @@ class Block:
         blocks.append(self)
         self.x = x * 32
         self.y = y * 32
+        self.name = name
         self.win = win
         pg.resource.path = [r'.\res']
         pg.resource.reindex()

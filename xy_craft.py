@@ -1,5 +1,5 @@
 import pyglet as pg
-
+from random import random, randint
 from block import Block, blocks
 
 
@@ -42,6 +42,28 @@ class XyCraft:
                 self.world_blocks[y][x] = Block(x, y, 'stone', self.win)
 
         # 地表地形生成
+        # 生成草块
+        for y in range(6, 14):
+            for x in range(24):
+                is_grass_probability = y / 25  # 是草块的概率随着高度增加而增加
+                if (isinstance(
+                        self.world_blocks[y - 1][x], type(0))):  # 如果它的下面是空气
+                    is_grass_probability = 0  # 概率为0
+                elif (self.world_blocks[y - 1][x].name == 'grass'):  # 如果它的下面是草块
+                    is_grass_probability = 1 / 15  # 则概率固定在1/15
+                if (random() < is_grass_probability):
+                    self.world_blocks[y][x] = Block(x, y, 'grass', self.win)
+
+                else:
+                    is_grass_probability = 1  # 是除特殊情况，永远是石头：
+                    if (isinstance(
+                            self.world_blocks[y - 1][x], type(0))):  # 如果它的下面是空气
+                        is_grass_probability = 0  # 概率为0
+                    elif (self.world_blocks[y - 1][x].name == 'grass'):  # 如果它的下面是草块
+                        is_grass_probability = 0  # 概率为0
+                    if (random() < is_grass_probability):
+
+                        self.world_blocks[y][x] = Block(x, y, 'stone', self.win)
 
         @self.win.event
         def on_draw():
@@ -49,7 +71,6 @@ class XyCraft:
             self.sky.blit(0, 0)
             for block in blocks:
                 block.draw()
-
 
         @self.win.event
         def on_key_press(symbol, modifiers):
@@ -69,6 +90,7 @@ class XyCraft:
 
     def on_text(self, text):
         print(text)
+
 
 craft = XyCraft()
 pg.app.run()
