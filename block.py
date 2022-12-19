@@ -18,3 +18,6 @@ class Block:
 
     def draw(self):
         self.img.blit(self.x, self.y)
+
+    def __bool__(self):
+        return True
