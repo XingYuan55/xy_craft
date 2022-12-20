@@ -1,6 +1,7 @@
 import pyglet as pg
 from random import random, randint
 from block import Block, blocks
+from steve import Steve
 
 
 class XyCraft:
@@ -9,7 +10,7 @@ class XyCraft:
             width=768,
             height=512
         )
-
+        self.steve = Steve()
         self.world_blocks = [  # 方块列表
             [_ for _ in range(24)],  # y=0
             [_ for _ in range(24)],  # y=1
@@ -42,6 +43,8 @@ class XyCraft:
             self.sky.blit(0, 0)
             for block in blocks:
                 block.draw()
+            self.steve.draw()
+
 
         @self.win.event
         def on_key_press(symbol, modifiers):
@@ -104,17 +107,14 @@ class XyCraft:
     def is_air(self, x, y):
         return isinstance(self.world_blocks[y][x], type(0))
 
-    def on_draw(self):
-        self.win.clear()
-        self.stone.blit(0, 0)
-        self.grass.blit(0, 32)
-
     def on_key_press(self, symbol, modifiers):
-        print(symbol)
+        if symbol == pg.window.key.A:
+            pg.clock.schedule_interval(self.steve.lmove, 1/60, )
+        if symbol == pg.window.key.D:
+            pg.clock.schedule_interval(self.steve.rmove, 1/60, )
 
     def on_text(self, text):
-        print(text)
-
+        ...
 
 craft = XyCraft()
 pg.app.run()
