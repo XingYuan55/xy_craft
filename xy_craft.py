@@ -74,10 +74,10 @@ class XyCraft:
         try:
             if self.is_air(x + 1, y):
                 is_grass_probability += 1 / 15
-            if self.is_air(x + 1, y):
+            if self.is_air(x - 1, y):
                 is_grass_probability += 1 / 15
-                if self.is_air(x + 1, y):
-                    is_grass_probability += 1 / 15
+            if self.is_air(x, y + 1):
+                is_grass_probability += 1 / 15
         except IndexError:
             ...
 
@@ -98,9 +98,9 @@ class XyCraft:
         if (isinstance(
                 self.world_blocks[y - 1][x], type(0))):  # 如果它的下面是空气
             is_grass_probability = 0  # 概率为0
-        elif (self.world_blocks[y - 1][x].name == 'grass'):  # 如果它的下面是草块
+        elif self.world_blocks[y - 1][x].name == 'grass':  # 如果它的下面是草块
             is_grass_probability = 0  # 概率为0
-        if (random() < is_grass_probability):
+        if random() < is_grass_probability:
             self.world_blocks[y][x] = Block(
                 x, y, 'stone', self.win)
 
