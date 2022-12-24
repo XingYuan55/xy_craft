@@ -1,5 +1,5 @@
 import pyglet as pg
-from random import random, randint
+from random import random
 from block import Block, blocks
 from steve import Steve
 
@@ -109,9 +109,9 @@ class XyCraft:
 
     def on_key_press(self, symbol, modifiers):
         if symbol == pg.window.key.A:
-            pg.clock.schedule_interval(self.steve.lmove, 1/60, )
+            self.steve.lmove()
         if symbol == pg.window.key.D:
-            pg.clock.schedule_interval(self.steve.rmove, 1/60, )
+            self.steve.rmove()
 
     def on_text(self, text):
         ...
