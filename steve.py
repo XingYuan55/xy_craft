@@ -14,9 +14,9 @@ class Steve:
 
     def rmove(self, dt=1/120):
         if self.sprite.x < 768-15:
-            self.sprite.x += 15 * dt
+            self.sprite.x += 15
 
     def lmove(self, dt=1/120):
         if self.sprite.x > 0:
-            self.sprite.x += -15 * dt
+            self.sprite.x += -15
 
