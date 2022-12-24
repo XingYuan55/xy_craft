@@ -7,7 +7,8 @@ class Steve:
         pg.resource.reindex()
         self.img = pg.resource.image(img)
         self.sprite = pg.sprite.Sprite(img=self.img)
-        self.sprite.y = 400
+        self.y = 400
+        self.sprite.y = self.y
 
     def draw(self):
         self.sprite.draw()
