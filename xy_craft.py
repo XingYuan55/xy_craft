@@ -1,6 +1,6 @@
 import pyglet as pg
 from random import random
-from block import Block, blocks
+from block import Block
 from steve import Steve
 
 
@@ -8,9 +8,9 @@ class XyCraft:
     def __init__(self):
         self.win = pg.window.Window(
             width=768,
-            height=512
+            height=512,
         )
-        self.steve = Steve()
+
         self.world_blocks = [  # 方块列表
             [_ for _ in range(24)],  # y=0
             [_ for _ in range(24)],  # y=1
@@ -34,8 +34,9 @@ class XyCraft:
         pg.resource.path = [r'.\res']
         pg.resource.reindex()
         self.sky = pg.resource.image(r"sky.png")
-
         self.create_world()
+        self.steve = Steve(self)
+
 
         @self.win.event
         def on_draw():
@@ -45,7 +46,6 @@ class XyCraft:
             #     block.draw()
             self.blocks_batch.draw()
             self.steve.draw()
-
 
         @self.win.event
         def on_key_press(symbol, modifiers):
@@ -61,7 +61,9 @@ class XyCraft:
         # 地下基层岩石生成
         for y in range(6):
             for x in range(24):
-                self.world_blocks[y][x] = Block(x, y, 'stone', self.win, self.blocks_batch)
+                # noinspection PyTypeChecker
+                self.world_blocks[y][x] = Block(
+                    x, y, 'stone', self.win, self.blocks_batch)
 
         # 地表地形生成
         for y in range(6, 14):
@@ -89,7 +91,9 @@ class XyCraft:
             is_grass_probability /= 10  # 则概率除以10
 
         if random() < is_grass_probability:
-            self.world_blocks[y][x] = Block(x, y, 'grass', self.win, self.blocks_batch)
+            # noinspection PyTypeChecker
+            self.world_blocks[y][x] = Block(
+                x, y, 'grass', self.win, self.blocks_batch)
             return True
         else:
             return False
@@ -102,11 +106,12 @@ class XyCraft:
         elif self.world_blocks[y - 1][x].name == 'grass':  # 如果它的下面是草块
             is_grass_probability = 0  # 概率为0
         if random() < is_grass_probability:
+            # noinspection PyTypeChecker
             self.world_blocks[y][x] = Block(
                 x, y, 'stone', self.win, self.blocks_batch)
 
     def is_air(self, x, y):
-        return isinstance(self.world_blocks[y][x], type(0))
+        return type(self.world_blocks[y][x]) == type(0)
 
     def on_key_press(self, symbol, modifiers):
         ...
