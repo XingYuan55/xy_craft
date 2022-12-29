@@ -50,5 +50,6 @@ class Steve:
             if self.xc_game.is_air(0, y):
                 continue
             else:
-                self.y = y
+                self.y = y + 1
+                break
         self.update_pos()
