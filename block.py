@@ -19,8 +19,8 @@ class Block:
         self.sprite.y = self.y
 
     def draw(self):
-        self.sprite.x = self.x
-        self.sprite.y = self.y
+        # self.sprite.x = self.x
+        # self.sprite.y = self.y
         self.sprite.draw()
 
     def __bool__(self):

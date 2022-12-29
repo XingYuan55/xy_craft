@@ -40,7 +40,7 @@ class XyCraft:
         @self.win.event
         def on_draw():
             self.win.clear()
-            self.sky.blit(0, 0)`qqqqqqqq
+            self.sky.blit(0, 0)
             # for block in blocks:
             #     block.draw()
             self.blocks_batch.draw()
@@ -109,13 +109,14 @@ class XyCraft:
         return isinstance(self.world_blocks[y][x], type(0))
 
     def on_key_press(self, symbol, modifiers):
-        if symbol == pg.window.key.A:
-            self.steve.lmove()
-        if symbol == pg.window.key.D:
-            self.steve.rmove()
+        ...
 
     def on_text(self, text):
-        ...
+        if text == 'a':
+            self.steve.lmove()
+        if text == 'd':
+            self.steve.rmove()
+
 
 craft = XyCraft()
 pg.app.run()

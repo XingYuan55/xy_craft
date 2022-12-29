@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../.idea/py_proj.iml" filepath="$PROJECT_DIR$/../.idea/py_proj.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/xyCraft.iml" filepath="$PROJECT_DIR$/.idea/xyCraft.iml" />
     </modules>
   </component>
