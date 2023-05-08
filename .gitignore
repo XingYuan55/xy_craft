@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 .\idea\
 __\pycache__\
+=======
+.idea\
+__pycache__\
+>>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5

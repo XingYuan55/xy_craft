@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import time
 
+=======
+>>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5
 import pyglet as pg
 
 
@@ -10,11 +13,19 @@ class Steve:
         self.rimg = pg.resource.image('steve-right.png')
         self.limg = pg.resource.image('steve-left.png')
         self.sprite = pg.sprite.Sprite(img=self.rimg)
+<<<<<<< HEAD
         self.x = 0  # 坐标的x
         self.y = 0  # 坐标的y
         self.speed = 10
         self.ax = self.x * 32  # 在世界中方块位置的x
         self.ay = self.y * 32  # 在世界中按方块位置的y
+=======
+        self.x = 0
+        self.y = 0
+        self.speed = 10
+        self.ax = self.x * 32
+        self.ay = self.y * 32
+>>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5
         self.sprite.y = self.ay
         self.sprite.x = self.ax
         self.xc_game = xc_game
@@ -47,6 +58,7 @@ class Steve:
             self.sprite.x -= self.speed
             self.sprite.image = self.limg
 
+<<<<<<< HEAD
 
     def fall(self, y=1):
         for i in range(y):
@@ -58,6 +70,8 @@ class Steve:
             for j in range(16):
                 self.sprite.y += 2
 
+=======
+>>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5
     def init_steve(self):
         for y in range(15, -1, -1):
             if self.xc_game.is_air(0, y):
