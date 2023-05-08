@@ -12,11 +12,7 @@ class XyCraft:
         )
 
         self.world_blocks = [  # 方块列表
-<<<<<<< HEAD
             [_ for _ in range(24)],  #  y=0
-=======
-            [_ for _ in range(24)],  # y=0
->>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5
             [_ for _ in range(24)],  # y=1
             [_ for _ in range(24)],  # y=2
             [_ for _ in range(24)],  # y=3
@@ -32,11 +28,7 @@ class XyCraft:
             [_ for _ in range(24)],  # y=13
             [_ for _ in range(24)],  # y=14
             [_ for _ in range(24)],  # y=15
-<<<<<<< HEAD
         ]  # 这些奇怪的循环是占位
-=======
-        ]  # 这些奇怪的循环是占位符
->>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5
         self.blocks_batch = pg.graphics.Batch()
         # 加载资源
         pg.resource.path = [r'.\res']
@@ -44,11 +36,6 @@ class XyCraft:
         self.sky = pg.resource.image(r"sky.png")
         self.create_world()
         self.steve = Steve(self)
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5
         @self.win.event
         def on_draw():
             self.win.clear()
@@ -121,20 +108,16 @@ class XyCraft:
             self.world_blocks[y][x] = Block(
                 x, y, 'stone', self.win, self.blocks_batch)
 
-<<<<<<< HEAD
     def steve_can_move(self, direction_x, direction_y):
         if (self.is_air(self.steve.ax + direction_x, self.steve.ay)) or (self.is_air(self.steve.ax + direction_x, self.steve.ay + 1)):
             return True
         else:
             return False
 
-=======
->>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5
     def is_air(self, x, y):
         return type(self.world_blocks[y][x]) == type(0)
 
     def on_key_press(self, symbol, modifiers):
-<<<<<<< HEAD
         # print(symbol)
         # if symbol == pg.window.key.A:
         #     self.steve.lmove()
@@ -151,16 +134,6 @@ class XyCraft:
             if self.steve_can_move(-1, 0):
                 self.steve.rmove()
         ...
-=======
-        ...
-
-    def on_text(self, text):
-        if text == 'a':
-            self.steve.lmove()
-        if text == 'd':
-            self.steve.rmove()
-
->>>>>>> 372e3d326d90b341a3f1027075b0349ed5ef71b5
 
 craft = XyCraft()
 pg.app.run()
